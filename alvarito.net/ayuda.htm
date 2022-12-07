@@ -1,0 +1,43 @@
+<p>
+<OBJECT id=fleck classid=CLSID:F5BE8BD2-7DE6-11D0-91FE-00C04FD701A5></OBJECT>
+<SCRIPT>
+var PeedyID;
+var PeedyACS;
+fleck.Connected = true;
+PeedyLoaded = LoadLocalAgent(PeedyID, PeedyACS);
+Peedy = fleck.Characters.Character(PeedyID);
+Peedy.Show();
+Peedy.Play("Surprised");
+Peedy.Play("Greet");
+Peedy.Speak("¡¡¡ Bienvenid@ a WwW.AlVaRiTo.NeT !!!");
+Peedy.Play("Think");
+Peedy.Speak("No se si nos habíamos visto alguna vez... ¿Es tu primera visita?");
+Peedy.Play("Announce");
+Peedy.Speak("Soy Merlín, y pido tu atención en lo que voy a decir... Permite que este viejo con experiencia te aconseje sobre la navegación en la WEB:");
+Peedy.Play("Process");
+Peedy.Think("Continuamente estamos renovando cosas en WwW.AlVaRiTo.NeT, pero ello nunca afectará al modo de moverse por la WEB");
+Peedy.Play("GetAttention");
+Peedy.Play("Congratulate_2");
+Peedy.Think("Seguramente vengas de la INTRO, ¿Te gustó?");
+Peedy.Play("Surprised");
+Peedy.Speak("Puedes ver un menú...");
+Peedy.Play("ReadContinued");
+Peedy.Speak("a");
+Peedy.Play("DoMagic1");
+Peedy.Speak("ESTAMOS AUN EN PRUEBAS");
+Peedy.Play("DoMagic2");
+Peedy.Speak("b");
+Peedy.Play("Alert");
+Peedy.Speak("alerta");
+Peedy.Play("Idle3_1");
+Peedy.Play("Wave");
+Peedy.Speak("Si quieres que desaparezca, presióname y después marca la opción Ocultar... ¡Aunque pensándolo bien ya me voy! ");
+Peedy.Hide();
+function LoadLocalAgent(CharID, CharACS)
+{
+LoadReq = fleck.Characters.Load(CharID, CharACS);
+return(true);
+}
+</SCRIPT>
+
+</p>

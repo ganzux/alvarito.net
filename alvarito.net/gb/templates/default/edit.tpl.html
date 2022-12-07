@@ -1,0 +1,30 @@
+
+    <h3>{txt_update_entry}</h3>
+
+    <p style="margin-bottom:30px;">
+      <a href="./index.php?offset={offset}">{txt_display_entries}</a>
+
+      <IF NAME="logged_in">
+      &nbsp;&nbsp;-&nbsp;&nbsp;<a href="./logout.php">{txt_logout}</a>
+      </IF NAME="logged_in">
+    </p>
+
+    <LOOP NAME="message">
+      <p class="messages">{message}</p>
+      <blockquote class="messages">{addition}</blockquote>
+    </LOOP NAME="message">
+
+    {entry_detail}   <!--  <<<  Detail template: entry_detail.tpl.html -->
+
+
+    <IF NAME="show_form">
+
+    <form name="guestbookform" action="./edit.php" method="post">
+      <input type="hidden" name="entry_id" value="{entry_id}">
+      <input type="hidden" name="offset" value="{offset}">
+
+    {form_detail}   <!--  <<<  Detail template: form_detail.tpl.html -->
+
+
+    </form>
+    </IF NAME="show_form">

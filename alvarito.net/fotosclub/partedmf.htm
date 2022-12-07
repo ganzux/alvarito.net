@@ -1,0 +1,29 @@
+<HTML><HEAD><TITLE>Carnet socio iTo Detras</TITLE>
+<BODY><P><IMG height=180 src="ito1.jpg" width=300 
+border=0></P>
+<SCRIPT language=Javascript>
+
+
+function printit(){  
+if (window.print) {
+    window.print() ;  
+} else {
+    var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
+    WebBrowser1.ExecWB(6, 2);//Use a 1 vs. a 2 for a prompting dialog box    WebBrowser1.outerHTML = "";  
+}
+}
+</SCRIPT>
+
+<SCRIPT language=Javascript>  
+var NS = (navigator.appName == "Netscape");
+var VERSION = parseInt(navigator.appVersion);
+if (VERSION > 3) {
+    document.write('<form><input type=button value="Imprimir esta pagina" name="Print" onClick="printit()"></form>');        
+}
+</SCRIPT>
+<SPAN style="LEFT: 76; POSITION: absolute; TOP: 128">
+<INPUT 
+style="BORDER-RIGHT: #ffffff 0px solid; PADDING-RIGHT: 0px; BORDER-TOP: #ffffff 0px solid; PADDING-LEFT: 0px; FONT-SIZE: 9pt; PADDING-BOTTOM: 0px; BORDER-LEFT: #ffffff 0px solid; WIDTH: 90px; PADDING-TOP: 0px; BORDER-BOTTOM: #ffffff 0px solid; FONT-FAMILY: arial; HEIGHT: 22px; fonf-weight: bold" 
+tabIndex=0 value="Pepito" name=campo1 size="6"></SPAN> 
+</FORM></BODY></HTML>

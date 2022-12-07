@@ -1,0 +1,43 @@
+    <IF NAME="logged_in">
+      <INCLUDE FILENAME="./../templates/default/menu.tpl.html">
+      <div style="float:right;margin-right:50px;"><iframe name="search_engine" src="http://www.stadtaus.com/user_information/{language}/download_center/" width="300" height="400" frameborder="0"></iframe></div>
+    </IF NAME="logged_in">
+
+    <h3>{txt_admin_interface}</h3>
+
+
+
+    <IF NAME="login_form">
+
+    <p>{txt_login_note}</p>
+    
+    <LOOP NAME="message">
+      <p class="messages">{message}</p>
+      <blockquote class="messages">{addition}</blockquote>
+    </LOOP NAME="message">
+
+    <form action="{script_self}" method="post">
+
+      <table border="0">
+        <tr>
+          <td class="captions">{label:%username%} &nbsp;&nbsp;&nbsp;</td>
+          <td>{field:%username%}</td>
+        </tr>
+        <tr>
+          <td class="captions">{label:%password%} &nbsp;&nbsp;&nbsp;</td>
+          <td>{field:%password%}</td>
+        </tr>
+        <tr valign="top">
+          <td></td>
+          <td><input type="submit" name="send" value="{txt_login}"></td>
+        </tr>
+       </table>
+
+    </form>
+
+    </IF NAME="login_form">
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+           

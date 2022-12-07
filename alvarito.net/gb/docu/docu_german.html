@@ -1,0 +1,899 @@
+<?xml version="1.0"?>
+<!doctype html public "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir=" ltr
+">
+<head>
+  <title> Dokumentation Gästebuch-Script
+</title>
+    <meta http-equiv="Content-Type" content="text/html; charset= iso-8859-1
+" />
+    <meta name="robots" content="noindex">
+
+
+
+<style type="text/css">
+<!--
+  h4 {
+      font-family:Tahoma,Helvetica,Geneva,Sans-serif,sans-serif;
+      margin-top:5px;
+      text-align:center;
+  }
+
+  
+  h5 {
+      font-family:Tahoma,Helvetica,Geneva,Sans-serif,sans-serif;
+      margin-top:50px;
+      margin-bottom:5px;
+      text-align:center;
+      font-size:11pt;
+  }
+
+  
+  p, td, br, form, ol, a, ul, li {
+      font-family:Verdana,Helvetica,Geneva,Sans-serif,sans-serif;
+      font-size:10.5pt;
+  }
+
+   
+  body {
+      background-color:#FFFFFF;
+  }   
+   
+
+  .chapter {
+      width:650px;
+      border-width:1px;
+      border-style:solid;
+      border-color:#006699;
+      margin-left:50px;
+      padding:10px;
+      margin-bottom:20px;
+      background-color:#EFEFEF;
+      line-height:14pt;
+  }
+
+  
+  .code {
+      font-family:Courier New;
+  }
+
+  
+  .links {
+      width:650px;
+      margin-left:50px;
+      padding:5px;
+      margin-bottom:10px;
+      text-align:center;
+  }
+  
+      
+  .strong {
+      font-weight:bold;
+  }
+
+-->
+</style>
+
+<body>
+  
+  <a name="top"></a>
+    
+
+  <div class="chapter"><a name="thanks"></a>
+<h4>Dokumentation Gästebuch-Script</h4>
+<p> Vielen Dank für Ihr Interesse an unserem Gästebuch-Script. Wir empfehlen Ihnen, sich Zeit für die Lektüre 
+ 		dieser Anleitung zu nehmen.
+</p>
+<p> Smilies powered by <a href="http://elouai.com/smiley_face.php">eLouai Smilies</a> <a href="http://elouai.com/smiley_face.php"><img src="./images/smileybanner64x32.gif" width="64" height="32" border="0" alt="" valign="middle" hspace="20"></a>
+ 
+ 
+</p>
+<p align="right"><a href="#top"> Nach oben
+</a></p></div>
+<div class="links"><a href="#function
+"> Funktionsweise</a>&nbsp;&nbsp;
+<a href="#configuration
+"> Konfiguration</a>&nbsp;&nbsp;
+<a href="#upload
+"> Upload</a>&nbsp;&nbsp;
+<a href="#installation
+"> Installation</a>&nbsp;&nbsp;
+<a href="#formfields
+"> Formularfelder</a>&nbsp;&nbsp;
+<a href="#html
+"> HTML-Templates</a>&nbsp;&nbsp;
+<a href="#support
+"> Hilfe&nbsp;und&nbsp;Support</a>&nbsp;&nbsp;
+<a href="#license
+ 
+ 
+"> Lizenz-Information</a>&nbsp;&nbsp;
+</div>
+<div class="chapter"><a name="introduction"></a>
+<h4>Einleitung</h4>
+<p> Das Script ist für den sofortigen Einsatz konfiguriert und eingerichtet. Nachdem Sie das Script per 
+ 			FTP auf den Server kopiert und mit Hilfe der Installations-Routine die Datenbanktabellen 
+ 			eingerichtet haben, können Sie es sofort verwenden.
+ 
+</p>
+<p> Wenn Sie Änderungen vornehmen möchten, sollten Sie diese schrittweise durchführen und nach jeder 
+ 			Änderung die Auswirkung auf das Script testen. Sie behalten dadurch den Überblick, welche der 
+ 			Änderungen einen eventuell auftretenden Fehler verursacht hat.
+ 
+</p>
+<p> Das HTML-Template wurde nach den Spezifikationen für XHTML 1.0 erstellt. Deshalb enthalten alle 
+ 			einfachen Tags (&lt;br&gt; oder &lt;input&gt;) einen abschließenden Slash (&lt;br /&gt; oder 
+ 			&lt;input type=&quot;text&quot; name=&quot;feld&quot; /&gt;).
+ 
+ 
+</p>
+<p align="right"><a href="#top"> Nach oben
+</a></p></div>
+<div class="chapter"><a name="function"></a>
+<h4>Funktionsweise des Scripts</h4>
+<p> Das Script funktioniert wie ein klassisches Gästebuch-Script. Besucher Ihrer Website sehen eine Liste 
+ 			der Einträge - der letzte Eintrag wird zuerst angezeigt. Der Besucher kann über ein Formular 
+ 			einen eigenen Eintrag in das Gästebuch vornehmen. 
+ 
+</p>
+<p> Zur Administration des Gästebuchs kann der Betreiber sich mit Hilfe der Datenbank-Zugangsdaten 
+ 			(Benutzername und Passwort) über die Datei "/admin/index.php" einloggen. Ist der Administrator 
+ 			eingeloggt, kann er die Datenbanktabellen des Scripts installieren und deinstallieren, und die 
+ 			Einträge ändern und löschen. Der Administrator erhält zusätzlich Informationen über den Autor 
+ 			des Eintrags (IP-Adresse, Browser).
+ 
+ 
+ 
+</p>
+<p align="right"><a href="#top"> Nach oben
+</a></p></div>
+<div class="chapter"><a name="configuration"></a>
+<h4>Konfiguration des Scripts</h4>
+<p> Die Datei "config.php" stellt die Konfigurationsdatei für das Script dar. Zum Ändern der 
+ 			Einstellungen öffnen Sie die Datei am besten in einem Texteditor (z.B.: Wordpad unter Windows).
+ 
+ 
+</p>
+<p> Die folgende Variable $database enthält die Zugangsdaten zu Ihrer MySQL-Datenbank. Diese Zugangsdaten 
+ 			erhalten Sie beim Einrichten einer Datenbank oder auf Nachfrage bei Ihrem Webspace-Provider. Die 
+ 			$database-Variablen haben folgende Bedeutungen: 
+ 
+</p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top"> 
+                                       <td class="code"> $database['host'] </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Name des Datenbank-Servers, z.B.: localhost, db98.puretec.de oder 
+ 					db23.kundenserver.de.
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $database['name'] </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Name der Datenbank. 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $database['user'] </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Benutzername für die Datenbank. 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $database['pass'] </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Passwort für die Datenbank. 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $database['prefix'] </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td> Um die Tabellen von eventuell bereits bestehenden Tabellen unterscheiden zu 
+ 					können, haben Sie die Möglichkeit, den Tabellen für das Gästebuch eine spezielle 
+ 					Vorsilbe zu geben.
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>&nbsp;
+ 
+ 
+<br /><br /></td>
+                                     </tr>
+</table>
+<p> Folgende Variablen können ebenfalls editiert werden:
+</p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top"> 
+                                       <td class="code"> $language </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Hier können Sie die Sprache festlegen. Eingetragen werden muss hier das Kürzel, dass auch 
+ 				im Namen der Sprachdatei im Verzeichnis "languages" verwendet wurde ("de" bei 
+ 				languages.de.inc.php und "en" bei languages.en.inc.php). 
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $results_per_page </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Diese Variable enthält die Anzahl der Gästebuch-Einträge, die pro Seite angezeigt 
+ 					werden sollen. Für den Fall, dass mehr Einträge existieren, werden automatisch 
+ 					Links zur Navigation zwischen den einzelnen Gästebuchseiten eingeblendet. Wenn 
+ 					Sie die Variable leer lassen oder auf 0 setzen, werden alle Ergebnisse auf einer 
+ 					Seite angezeigt. 
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $direct_page_links </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Bei einer hohen Anzahl von Einträgen kann die Liste der Links zu den einzelnen 
+ 					Gästebuch-Seiten recht lang werden und das Layout der Seite sprengen. Sie können 
+ 					deshalb festlegen, wie viele der Links angezeigt werden sollen. Wenn Sie also 
+ 					zum Beispiel 20 Gästebuchseiten haben, erhalten Sie folgende Liste der 
+ 					Direkt-Links zu den einzelnen Seiten: 
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code">		     </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	<b>1</b> 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code">		     </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Das können beispielsweise auf 9 beschränken. Alle Zahlen nach der 9 werden durch 
+ 					drei Punkte (können Sie im HTML-Template ändern) ersetzt: 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code">		     </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	<b>1</b> 2 3 4 5 6 7 8 9 ... 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> 		     </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Die Anzeige der Direkt-Links wird sich erst ab Seite 6 ändern: 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code">		     </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	... 2 3 4 5 <b>6</b> 7 8 9 10 ... 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code">		     </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Tipp: Sie können dieses Verhalten relativ einfach testen, wenn Sie einige 
+ 					Test-Einträge vornehmen und Zahl der Einträge pro Seite auf 1 beschränken. 
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $show_error_messages </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Bei Auslieferung des Scripts ist diese Variable standardmäßig auf 'yes' 
+ 						gesetzt. Das hat zur Folge, dass Sie bei der Konfiguration des Scripts 
+ 						Fehlermeldungen und Hinweise zur Einrichtung des Scripts erhalten. 
+ 						Sobald jedoch das System funktioniert, können Sie die Ausgabe der 
+ 						Meldungen abschalten. So verwehren Sie allzu neugierigen Besuchern den 
+ 						Einblick in das System. 
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $path['templates'] </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Diese Variable enthält den Pfad zum Verzeichnis mit den HTML-Templates. 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $file[] </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Alle Variablen dieser Form enthalten Dateinamen von Templates. Diese Templates sind näher 
+ 				im Kapitel "HTML-Templates" erklärt.
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $add_text </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Sie können weitere Werte, Text, Variablen oder andere Inhalte an dieser Stelle festlegen. 
+ 				Diese Inhalte können dann mit Hilfe von entsprechenden Markierungen in geschweiften 
+ 				Klammern in die Templates übertragen werden. 
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code">	    </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Wenn Sie eigene Werte in der Variable $add_text hinzufügen, folgen Sie bitte dem Muster, 
+ 				das durch die beiden Beispieleinträge deutlich gemacht wurde. 
+<br /><br /></td>
+                                     </tr>
+</table>
+<pre>
+ 
+ $add_text = array(
+ 
+                     'txt_additional' =&gt; 'Additional',
+                     'txt_more'       =&gt; 'More'
+ 
+                   );
+           
+</pre>
+<p> Der erste Teil eines Eintrags (z.B.: 'txt_additional') stellt den Namen der Platzhalter im Template 
+ 			dar. Wenn Sie den Wert von 'txt_additional' im Template anzeigen möchten, tragen Sie dort den 
+ 			Namen umschlossen von geschweiften Klammern ein - {txt_additional}. Der Name darf keine Leer- 
+ 			oder Sonderzeichen enthalten. Erlaubt ist nur der Unterstrich (_).
+ 
+ 
+</p>
+<p align="right"><a href="#top"> Nach oben
+</a></p></div>
+<div class="chapter"><a name="upload"></a>
+<h4>Dateien auf den Webserver kopieren - Upload</h4>
+<p> Erstellen Sie auf dem Server folgende Verzeichnisse (bei den meisten FTP-Programmen ist es auch 
+ 			möglich, alle Dateien und Verzeichnisse zu markieren und zusammen auf den Server zu laden):
+ 
+</p>
+<pre> 
+ /guestbook/
+ /guestbook/inc/
+ /guestbook/languages/
+ /guestbook/templates/ 
+ 
+</pre>
+<p> Kopieren Sie alle Dateien in ihre entsprechenden Verzeichnisse auf den Server. Alle Bilddateien 
+ 			(.gif, .jpg, .png) müssen im Binär-Modus (Binary) auf den Server übertragen werden. Alle 
+ 			restlichen Dateien müssen im ASCII-Modus (Text-Modus) hochgeladen werden. 
+ 
+ 
+ 
+ 
+</p>
+<p align="right"><a href="#top"> Nach oben
+</a></p></div>
+<div class="chapter"><a name="installation"></a>
+<h4>Installation</h4>
+<p> Vor dem Hochladen der Dateien müssen Sie die Zugangsdaten zu Ihrer MySQL-Datenbank in der Datei 
+ 			"config.php" angeben. Diese Zugangsdaten erhalten Sie beim Einrichten einer Datenbank 
+ 			oder auf Nachfrage bei Ihrem Webspace-Provider.
+ 
+</p>
+<p> Dabei haben die $database-Variablen folgende Bedeutungen:
+</p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top"> 
+                                       <td class="code"> $database['host'] </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Name des Datenbank-Servers, z.B.: localhost, db98.puretec.de oder 
+ 					db23.kundenserver.de. 
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $database['name'] </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Name der Datenbank. 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $database['user'] </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Benutzername für die Datenbank. 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $database['pass'] </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Passwort für die Datenbank. 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> $database['prefix'] </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Um die Tabellen von eventuell bereits bestehenden Tabellen unterscheiden zu 
+ 					können, haben Sie die Möglichkeit, den Tabellen für das Gästebuch eine 
+ 					spezielle Vorsilbe zu geben.
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>&nbsp;
+ 
+ 
+<br /><br /></td>
+                                     </tr>
+</table>
+<p> Wenn Sie alle Daten eingetragen und die aktualisierten Dateien auf den Server kopiert haben, können 
+ 			Sie die Datenbank-Tabellen installieren. Loggen Sie sich dafür in den Admin-Bereich ein 
+ 			(/admin/index.php) und gehen Sie in den Bereich "Datenbank". Am Fuß der Seite finden Sie 
+ 			eine Liste mit den notwendigen Datenbanktabellen und den aktuellen Status. Klicken Sie auf 
+ 			"Tabelle installieren", um die entsprechende Tabelle einzurichten.  
+ 
+</p>
+<p> Wenn Sie alle Daten eingetragen und die aktualisierten Dateien auf den Server kopiert haben, können 
+ 			Sie die Datenbank-Tabellen installieren. Sie erhalten beim ersten Aufruf des Gästebuch automatisch 
+ 			die Installationsseite. Klicken Sie auf den grünen Submit-Button. Nach erfolgreicher Installation 
+ 			wird das (noch leere) Gästebuch angezeigt.
+ 
+ 
+</p>
+<p align="right"><a href="#top"> Nach oben
+</a></p></div>
+<div class="chapter"><a name="formfields"></a>
+<h4>Konfiguration der Formularfelder</h4>
+<p> Die Formularfelder werden in der Datei "form_config.php" in der folgenden Form konfiguriert.
+</p>
+<pre> 
+ 
+ $new_form_fields[] = array(
+                             'name'       =&gt; 'name',
+                             'label'      =&gt; 'Name',
+                             'type'       =&gt; 'text',
+                             'required'   =&gt; 'yes',
+                             'value'      =&gt; ''
+                            );
+     
+</pre>
+<p> Jedes Formularfeld wird durch ein solches Element ($new_form_fields[]) definiert und enthält 
+ 			bestimmte Unterelemente:
+ 
+</p>
+<p> <form>
+</p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top"> 
+                                       <td class="code"> name </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Hier können Sie den Namen des Formularfeldes festlegen. Dieser Name wird intern durch 
+ 				das Script verwendet. Bitte vermeiden Sie Leerzeichen und Sonderzeichen. 
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> label </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Hier können Sie die Bezeichnung des Formularfelds eintragen, die auch der Benutzer zu 
+ 				sehen bekommt. Diese Bezeichnung können Sie später im Formular-Template neben dem 
+ 				Formularfeld platzieren. 
+ 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> type </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Mit "type" bestimmen Sie den Typ des Feldes. Zur Verfügung stehen: 
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> textarea </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Mehrzeiliges Textfeld.
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code">          </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	<textarea name="x" cols="20" rows="5">Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text </textarea>
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> text </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Einzeiliges Textfeld.
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code">      </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	<input type="Text" name="x" value="Text" size="30" />
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> password </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Passwort-Feld - alle eingegebenen Werte werden als Sternchen (***)  <br />angezeigt.
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code">	   </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	<input type="Password" name="x" value="Text" size="30" />
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> radio	</td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Radio-Button. &nbsp;&nbsp; <input type="Radio" name="x" value="v" />
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> checkbox </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Checkbox. &nbsp;&nbsp; <input type="Checkbox" name="x" value="v" />
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> select </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Auswahlmen&uuml;. &nbsp;&nbsp; <select name="x" size="1"><option value="Text">Text</option></select>
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> required </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Wenn Sie diese Option auf "yes" setzen, deklarieren Sie das Feld als Pflichtfeld. 
+ 				Der Gästebucheintrag wird erst gespeichert, wenn der Benutzer alle Pflichtfelder 
+ 				ausgefüllt hat. Sie können diese Option leer oder ganz weg lassen.
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> value </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Mit dieser Option k&ouml;nnen Sie einen Wert für das Formularfeld vorgeben. Dieser Wert 
+ 				erscheint dann automatisch beim Aufruf des Formulars als Wert des Formularfeldes. Sie 
+ 				können diese Option aber auch ohne Weiteres leer oder weg lassen.
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code">	</td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Bei Auswahlmenüs und Radio-Buttons können Sie die einzelnen Auswahlmöglichkeiten durch 
+ 				Komma getrennt eintragen. Beispiel Auswahlmenü:
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code">	</td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	'value' => 'Rot, Grün, Gelb, Blau'
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code">	</td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	wird zu: &nbsp;&nbsp; <select name="x" size="1"><option value="Rot">Rot</option><option value="Gr&uuml;n">Gr&uuml;n</option><option value="Gelb">Gelb</option><option value="Blau">Blau</option></select>
+<br /><br /></td>
+                                     </tr>
+<tr valign="top"> 
+                                       <td class="code"> selected </td>
+                                       <td>&nbsp;&nbsp;&nbsp;</td>
+                                       <td>	Bei Auswahlmenüs und Radio-Buttons können Sie einen der in "value" angegebenen Werte 
+ 				vor-selektieren. Wenn Sie beim obigen Beispiel zum Beispiel den Wert Gelb vor-selektieren 
+ 				möchten, muss die Option wie folgt lauten: 'selected' => 'Gelb'. 
+<br /><br /></td>
+                                     </tr>
+</table>
+<p> </form> 
+ 
+</p>
+<h4>Weitere Optionen</h4>
+<p> Zusätzlich zu den vom Script vorgegebenen Optionen können Sie jedem Formularfeld-Element weitere 
+ 			Optionen hinzufügen. Diese werden dann automatisch in das Formularfeld eingefügt. Mögliche 
+ 			Optionen wären zum Beispiel: maxlength, size, cols, rows, selected, checked. Aber auch 
+ 			CSS-Inhalte können Sie angeben: class, style.
+ 
+</p>
+<p> Beispiel:
+</p>
+<pre>
+ 
+ $new_form_fields[] = array(
+                             'name'       =&gt; 'comment',
+                             'label'      =&gt; 'Kommentar',
+                             'type'       =&gt; 'textarea',
+                             'required'   =&gt; 'yes',
+                             'value'      =&gt; '',
+                             'cols'       =&gt; '20',
+                             'rows'       =&gt; '10',
+                             'style'      =&gt; 'padding:5px;'
+                          );
+ 
+</pre>
+<p> Hier wurde ein mehrzeiliges Textfeld ('type' =&gt; 'textarea') mit dem internen Namen &quot;comment&quot; 
+ 			('name' =&gt; 'comment') definiert. In der HTML-Seite erscheint hingegen die Bezeichnung 
+ 			&quot;Kommentar&quot; ('label' =&gt; 'Kommentar'). Außerdem ist dieses Feld ein Pflichtfeld ('required' 
+ 			=&gt; 'yes') - Der Benutzer muss das Feld ausfüllen, um einen Eintrag im Gästebuch zu schreiben. 
+ 			Es ist kein Wert (Inhalt) für das Feld voreingestellt ('value' =&gt; ''). Das Textfeld wurde mit 
+ 			einer Breite von 20 Spalten ('cols' =&gt; '20') und einer Höhe von 10 Zeilen ('rows' =&gt; '10') 
+ 			definiert. Darüber hinaus erhält es noch einen Randabstand von 5 Pixel per CSS-Definition 
+ 			('style' =&gt; 'padding:5px;').
+ 
+</p>
+<h4>Beispiel-Formular</h4>
+<p> Zur Veranschaulichung der Konfiguration der verschiedenen Formularfelder wurden in der Datei 
+ 			"form_config_example.php" alle möglichen Formularfeldtypen definiert. Sie können das 
+ 			Beispiel-Formular mit der Datei "sign_example.php" aufrufen. Das zugehörige HTML-Template ist 
+ 			"form_detail_example.tpl.html".
+ 
+</p>
+<h4>Eintrag der Formulare im HTML-Template</h4>
+<p> Wie die Formularfelder im HTML-Template eingetragen werden, können Sie anhand des Template 
+ 			"form_detail.tpl.html" nachvollziehen. 
+ 
+</p>
+<p> Durch die Formularfeld-Definition erhalten Sie automatisch zwei Platzhalter: {label:...} und 
+ 			{field:...}. Die Punkte sind jeweils durch den Namen des Formularfeldes zu ersetzen, z.B.: 
+ 			{label:name} und {field:name} oder {label:comment} und {field:comment}. 
+ 
+</p>
+<p> Der Platzhalter {label:...} enthält die Bezeichnung des Formularfeldes, die der Benutzer sehen soll. 
+ 			Der Platzhalter {field:...} enthält den HTML-Code des Formularfeldes selbst, z.B.: 
+ 			&lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot; &quot; size=&quot;30&quot; style=&quot;width:350px;&quot; /&gt;
+ 
+</p>
+<p> Die Namen der Formularfelder tauchen in Form von Platzhaltern ({name} oder {comment}) auch im Template 
+ 			&quot;entry_detail.tpl.html&quot; auf. Innerhalb des LOOP-Blocks &lt;LOOP NAME=&quot;guestbook_entries&quot;&gt; werden 
+ 			sie durch die Werte aus der Datenbank ersetzt.
+ 
+ 
+ 
+</p>
+<p align="right"><a href="#top"> Nach oben
+</a></p></div>
+<div class="chapter"><a name="html"></a>
+<h4>Anpassung der HTML-Templates</h4>
+<p> Mit Hilfe von HTML und CSS können Sie die Templates, die sich im Verzeichnis "/templates/.../" 
+ 			befinden, komplett Ihren Wünschen anpassen. Die bereits bestehenden Unterverzeichnisse 
+ 			"default" und "simple" können als Vorschläge betrachtet werden, wie Sie Ihr Gästebuch 
+ 			gestalten können.
+ 
+</p>
+<p> Sollten Sie für die Anpassung WYSIWYG-Editoren wie Adobe GoLive, Macromedia Dreamweaver, MS 
+ 			Frontpage oder NetObjects Fusion verwenden, achten Sie bitte darauf, dass die Software 
+ 			keine eigenmächtigen Veränderungen vornimmt. Die Funktionsweise des Scripts könnte dadurch 
+ 			beeinträchtigt werden.
+ 
+</p>
+<p> In den Templates befinden sich Markierungen/Platzhalter in geschweiften Klammern, wie zum Beispiel 
+ 			{txt_next_page}. Die werden beim Aufruf des Scripts durch die entsprechenden Wörter ersetzt. 
+ 			Diese Wörter finden Sie in der Datei "languages/language.de.inc.php". Natürlich können Sie 
+ 			diese Wörter auch ändern oder an eine andere Position innerhalb des Templates verschieben. 
+ 			Es spricht auch nichts dagegen, wenn Sie die Markierungen durch richtige Wörter ersetzen. 
+ 			Ebenso können Sie die Sprachdatei nach dem vorgegebenen Muster erweitern.
+ 
+</p>
+<p> Neben den Platzhaltern für die Wörter existieren die so genannten Loops. Ähnlich wie HTML-Tags gehört 
+ 			immer ein Paar zusammen und darf auch nicht getrennt werden (&lt;LOOP ...&gt;...&lt;/LOOP&gt;). Sie haben 
+ 			aber die Möglichkeit, die Position des gesamten Blocks zu verändern sowie den HTML-Code innerhalb 
+ 			des Blocks anzupassen.
+ 
+</p>
+<p> Des weiteren gibt es IF-Blöcke. Diese dienen dazu, bei bestimmten Bedingungen Teile des HTML-Codes ein- 
+ 			oder auszublenden. Die IF-Blöcke sind genauso wie die Loop-Blöcke zu handhaben.
+ 
+ 
+</p>
+<h4>Die einzelnen HTML-Templates</h4>
+<p> main_layout.tpl.html
+ 
+</p>
+<p> Diese Datei kann Layout-Elemente enthalten, die für alle Seiten gelten. Dabei übernehmen alle Seiten 
+ 			des Gästebuchs automatisch das Layout, dass Sie in dieser Datei festlegen. Sie können diese Datei 
+ 			auch leer lassen und das Layout in den anderen Templates festlegen.
+ 
+</p>
+<p> Die Datei enthält den speziellen Platzhalter {main_content}. Dieser Platzhalter wird vom Script 
+ 			automatisch durch den Inhalt der einzelnen Detail-Templates ersetzt. Der Platzhalter darf unter 
+ 			keinen Umständen gelöscht werden. Auch nicht, wenn Sie die Datei ansonsten leer lassen möchten.
+ 
+</p>
+<p> Das Haupt-Template enthält außerdem den Platzhalter {txt_title} im Title-Tag (). Dieser Platzhalter wird 
+ 			in der Datei "config.php" in der Variable $add_text definiert. Dort wiederum wir die Variable 
+ 			$script_title verwendet. Diese Variable können Sie in den einzelnen PHP-Dateien (index.php, 
+ 			delete.php, edit.php, login.php, sign.php) definiert werden. Tragen Sie in diesen Dateien einfach 
+ 			den von Ihnen gewünschten Seitentitel ein.
+ 
+</p>
+<p> entries.tpl.html
+ 
+</p>
+<p> Diese Datei ist für das Layout der Seite für die Gästebucheinträge zuständig. Sie enthält folgende 
+ 			Elemente:
+ 
+</p>
+<p class="code"> &lt;IF NAME=&quot;logged_in&quot;&gt;
+ 
+</p>
+<p> Wenn der Administrator eingeloggt ist, wird hier der Link zum Ausloggen angezeigt.
+ 
+</p>
+<p class="code"> {txt_entries} {txt_page} {currentpage} {txt_page_of} {allpages}
+ 
+</p>
+<p> Diese Platzhalter enthalten Information über die Gesamtzahl der Gästebuchseiten und die Nummer der 
+ 			aktuellen Seite.
+ 
+</p>
+<p class="code"> &lt;IF NAME=&quot;previous_result_page&quot;&gt;
+ 
+</p>
+<p> Dieser IF-Block enthält Links zur Navigation. {txt_first_page} linkt zur ersten Seite der Ergebnisse. {txt_previous_page} linkt zur vorhergehenden Ergebnisseite.
+ 
+</p>
+<pre> 
+ 
+ &lt;IF NAME=&quot;page_link_start&quot;&gt;
+ &lt;IF NAME=&quot;page_link_end&quot;&gt;
+ 
+</pre>
+<p> Wenn Sie die Anzahl der Direktlinks auf die einzelnen Gästebuchseiten auf eine bestimmte Zahl 
+ 			beschränkt haben, wird am Anfang und/oder Ende der Linkliste der Inhalt dieser IF-Blöcke 
+ 			eingeblendet.
+ 
+</p>
+<p class="code"> &lt;LOOP NAME=&quot;page_direct&quot;&gt;
+ 
+</p>
+<p> Innerhalb dieses Loop-Blocks werden die Direkt-Links zu den einzelnen Gästebuchseiten angezeigt. 
+ 			Sie erhalten eine Link-Liste bestehend aus Zahlen (1 2 3 4 5 6 7 8 9 ...).
+ 
+</p>
+<p class="code"> &lt;IF NAME=&quot;next_result_page&quot;&gt;
+ 
+</p>
+<p> Dieser IF-Block enthält Links zur Navigation. {txt_last_page} linkt zur letzten Seite der Ergebnisse. 
+ 			{txt_next_page} linkt zur nächsten Ergebnisseite.
+ 
+</p>
+<p class="code"> {entry_detail}
+ 
+</p>
+<p> Das eigentliche Layout der Gästebucheinträge ist in der Datei "entry_detail.tpl.html" enthalten.
+ 
+</p>
+<p> entry_detail.tpl.html
+ 
+</p>
+<p class="code"> &lt;LOOP NAME=&quot;guestbook_entries&quot;&gt;
+ 
+</p>
+<p> Innerhalb dieses Loop-Blocks tauchen die Namen der Formularfelder in Form von Platzhaltern 
+ 			(z.B.: {name} oder {comment}) auf. Sie werden durch die Werte aus der Datenbank ersetzt.
+ 
+</p>
+<p> Das Script erstellt automatisch Variablen, die den modifizierten Inhalt der Gästebucheinträge 
+ 			enthalten. Folgende Änderungen werden vorgenommen:
+ 
+</p>
+<ul>
+  <li> HTML-Tags werden in Sonderzeichen umgewandelt, so dass der HTML-Code in der Gästebuchansicht nicht 
+ 			ausgeführt wird
+</li>
+  <li> In lange Textketten werden Leerzeichen eingefügt
+ 
+</li>
+</ul>
+<p> Anstelle des einfachen Platzhalters müssen Sie einen erweiterten Platzhalter nach folgendem Muster verwenden:
+ 
+</p>
+<p class="code"> {modified:...}
+ 
+</p>
+<p> Aus dem Feld {comment} würde das Feld {modified:comment} werden.
+ 
+ 
+ 
+</p>
+<p> sign.tpl.html<br />edit.tpl.html 
+ 
+</p>
+<p class="code"> &lt;LOOP NAME=&quot;message&quot;&gt;
+ 
+</p>
+<p> Dieser Loop-Block dient der Anzeige von Hinweisen und Fehlermeldungen, z.B. wenn ein 
+ 			Pflichtfeld nicht ausgefüllt wurde.
+ 
+</p>
+<p class="code"> {form_detail}
+ 
+</p>
+<p> Dieser Platzhalter wird vom Script automatisch durch das Formular-Template 
+ 			"form_detail.tpl.html" ersetzt.
+ 
+</p>
+<p> form_detail.tpl.html
+ 
+</p>
+<p> Durch die Formularfeld-Definition erhalten Sie automatisch zwei Platzhalter: {label:...} und 
+ 			{field:...}. Die Punkte sind jeweils durch den Namen des Formularfeldes zu ersetzen, z.B.: 
+ 			{label:name} und {field:name} oder {label:comment} und {field:comment}. 
+ 
+</p>
+<p> Der Platzhalter {label:...} enthält die Bezeichnung des Formularfelds, die der Benutzer sehen 
+ 			soll. Der Platzhalter {field:...} enhält den HTML-Code des Formularfeldes selbst, z.B.: 
+ 			&lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot; &quot; size=&quot;30&quot; style=&quot;width:350px;&quot; /&gt;.
+ 
+</p>
+<p class="code"> {emoticon_matrix}
+ 
+</p>
+<p> An dieser Stelle wird die Liste der verfügbaren Emoticons (Smilies) angezeigt. Wenn Sie keine 
+ 			Emoticons anbieten möchten, löschen Sie einfach diesen Platzhalter.
+ 
+ 
+ 
+ 
+</p>
+<p align="right"><a href="#top"> Nach oben
+</a></p></div>
+<div class="chapter"><a name="support"></a>
+<h4>Hilfe und Support</h4>
+<p> Antworten auf Ihre Fragen und Lösungen für Probleme mit dem Script finden Sie in unserem <a href="http://www.stadtaus.com/forum/" target="_blank">Support-Forum</a>.
+ 
+ 
+ 
+ 
+</p>
+<p align="right"><a href="#top"> Nach oben
+</a></p></div>
+<div class="chapter"><a name="license"></a>
+<h4>Informationen zur Script-Lizenz</h4>
+<p> Das Formmail-Script können Sie kostenlos nutzen. Wenn Sie das Script ohne Hinweis und Link auf STADTAUS.com betreiben möchten, können Sie die Vollversion online erwerben.
+</p>
+<ul>
+  <li> Sie können die Script-Lizenz an Dritte verkaufen, auch als professioneller Reseller.
+</li>
+  <li> Den Preis können Sie dabei selbst bestimmen.
+</li>
+  <li> Die Script-Lizenz gilt für eine Domain.
+</li>
+</ul>
+<p> Kontakt: <a href="http://www.stadtaus.com/" target="_blank">http://www.stadtaus.com/</a>
+</p>
+<p> Weitere Scripts auf STADTAUS.com:
+ 
+</p>
+<ul>
+  <li> Bildergalerie-Script
+</li>
+  <li> Apotheken-Notdienstkalender
+</li>
+  <li> Form-Mail-Script
+</li>
+  <li> Tell-A-Friend-Script (Website-Empfehlung)
+</li>
+  <li> Online-Terminplaner
+</li>
+  <li> Google-Tool
+</li>
+  <li> Download-Script
+</li>
+  <li> Gästebuch-Script
+</li>
+  <li> Voting-Script (Abstimmungen)
+ 
+</li>
+</ul>
+<p> Besuchen Sie unser neuestes Projekt MetaCollection. Die Seite ist ein Verzeichnis deutscher und internationaler Script-Archive.
+</p>
+<p> <a href="http://www.metacollection.com/" target="_blank">http://www.metacollection.com/</a>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+</p>
+<p align="right"><a href="#top"> Nach oben
+</a></p></div>
+
+ 
+
+  </body>
+  
+</html>

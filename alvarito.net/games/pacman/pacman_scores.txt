@@ -1,0 +1,1 @@
+&name1=pacman&score1=0

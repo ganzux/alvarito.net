@@ -1,0 +1,30 @@
+
+
+    <h3>{txt_delete_entry}</h3>
+
+    <p style="margin-bottom:30px;">
+      <a href="./index.php?offset={offset}">{txt_display_entries}</a>
+    </p>
+
+    <LOOP NAME="message">
+      <p class="messages">{message}</p>
+      <blockquote class="messages">{addition}</blockquote>
+    </LOOP NAME="message">
+
+    </p>
+
+
+    {entry_detail}   <!--  <<<  Detail template: entry_detail.tpl.html -->
+
+
+    <IF NAME="display_sure_link">
+      <div class="adminbuttons">
+        <strong><a href="./delete.php?id={entry_id}&delete=sure&offset={offset}">{txt_yes_sure}</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="./index.php?offset={offset}">{txt_cancel}</a>
+      </div>
+    </IF NAME="display_sure_link">
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>

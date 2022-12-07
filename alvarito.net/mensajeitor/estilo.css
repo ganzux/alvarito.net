@@ -1,0 +1,57 @@
+BODY {
+	scrollbar-face-color: #FFFFFF;
+	scrollbar-shadow-color: #EFEFEF;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-3dlight-color: #000000;
+	scrollbar-darkshadow-color: #000000;
+	scrollbar-track-color: #000000;
+	scrollbar-arrow-color: #000000; 
+	border: #FFFFFF;
+}
+
+a:link { text-decoration: none; color: #666699; }
+a:active { text-decoration: none; color: #666699; }
+a:visited { text-decoration: none; color: #666699; }
+a:hover { text-decoration: underline; color: #9999AA; }
+
+.tabla {  
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #000000;
+	border: 0px #000000 solid;
+}
+
+.form {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #444444;
+	border: 1px #666666 solid;
+}
+
+.td {
+	border: #000000;
+	border-style: solid;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+	background-color: #FFFFFF
+}
+
+.td1 {
+	border: #000000;
+	border-style: solid;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+	background-color: #F0F0F0;
+}
+
+
+.admin {  color: #0000CC
+}
+.info {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; color: #000000}

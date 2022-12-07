@@ -1,0 +1,27 @@
+
+    <table border="0" cellpadding="4" cellspacing="1" width="500">
+      <LOOP NAME="guestbook_entries">
+        <tr valign="top" class="{rowclass}">
+          <td width="100">
+              <span class="index">{txt_location}</span><br />{location}
+              <br /><br />              
+             <a href="{homepage}" target="_blank"><img src="./templates/default/images/homepage.gif" width="13" height="11" border="0" alt="{homepage}" title="{homepage}" /></a>&nbsp;
+             <a href="mailto:{email}"><img src="./templates/default/images/email.gif" width="13" height="11" border="0" alt="{email}" title="{email}" /></a>
+          </td>
+          <td>
+            <span style="font-size:11px;">
+             {txt_posted} {txt_on} {year}-{month}-{day} {txt_at} {hour}:{minute}:{second} {txt_by} <b>{name}</b> &nbsp;
+            </span><br /><br />
+            {modified:comment}
+          </td>
+        </tr>{admin_info}
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </LOOP NAME="guestbook_entries">
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+    </table>

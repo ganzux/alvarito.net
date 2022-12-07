@@ -1,0 +1,66 @@
+    <IF NAME="logged_in">
+      <INCLUDE FILENAME="./../templates/default/menu.tpl.html">
+    </IF NAME="logged_in">
+
+
+    <h3>{txt_admin_interface} - {txt_database}</h3>    
+    
+    <p>{txt_database_note}</p>
+    
+    
+    <LOOP NAME="message">
+      <p class="messages">{message}</p>
+      <blockquote class="messages">{addition}</blockquote>
+    </LOOP NAME="message">
+    
+    
+    <h4>{txt_database_information}</h4>
+    
+    <p>{txt_database_settings_note}</p>
+    
+    <table border="0" cellpadding="3" cellspacing="1">
+      <LOOP NAME="database_information">
+      <tr>
+        <td bgcolor="#EFEFEF" class="captions">{name}: &nbsp;&nbsp;</td>
+        <td bgcolor="#EFEFEF" class="code">{variable}</td>
+        <td bgcolor="#EFEFEF" class="code"> = </td>
+        <td bgcolor="#EFEFEF" class="code">{value} &nbsp;&nbsp;&nbsp;&nbsp;</td>
+      </tr>
+      </LOOP NAME="database_information">
+    </table>
+
+    <p>{txt_database_prefix_note}</p>
+    
+    
+           
+    
+    <a name="tables"></a>
+    <h4>{txt_database_tables}</h4>
+    
+    <p>{txt_database_tables_note}</p>
+        
+    <LOOP NAME="table_message">
+      <p class="messages">{message}</p>
+    </LOOP NAME="table_message">
+    
+    <IF NAME="confirm_form">
+      <p class="messages">{table_prefix}{confirm_table_name}</p>
+      <form name="install" action="{script_self}#tables" method="POST">
+        <input type="hidden" name="mode" value="uninstall">
+        <input type="hidden" name="table_name" value="{confirm_table_name}">
+        <input type="submit" name="confirm" value="{txt_yes_remove}">
+        <input type="submit" name="cancel" value="{txt_no_do_not_remove}">
+      </form>
+    </IF NAME="confirm_form">
+    
+    <table border="0" cellpadding="3" cellspacing="1">
+      <LOOP NAME="database_table_information">
+      <tr>
+        <td bgcolor="#EFEFEF" class="captions">{caption}: &nbsp;&nbsp;</td>
+        <td bgcolor="#EFEFEF" class="code">{full_name} &nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td bgcolor="#EFEFEF" class="code">{status} &nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td bgcolor="#EFEFEF" class="install"><form name="install" action="{script_self}#tables" method="POST"><input type="hidden" name="mode" value="install" /><input type="hidden" name="table_name" value="{name}" /><input type="submit" name="install" value="{txt_install_table}" {disable_install} /></form></td>
+        <td bgcolor="#EFEFEF" class="uninstall"><form name="uninstall" action="{script_self}#tables" method="POST"><input type="hidden" name="mode" value="uninstall" /><input type="hidden" name="table_name" value="{name}" /><input type="submit" name="install" value="{txt_uninstall_table}" {disable_uninstall} /></form></td>
+      </tr>
+      </LOOP NAME="database_table_information">
+    </table>

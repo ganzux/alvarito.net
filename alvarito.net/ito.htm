@@ -1,0 +1,138 @@
+
+<HTML>
+<HEAD>
+<TITLE>Menú Drop Down</TITLE>
+<style type="text/css">
+<!--
+     A:link {text-decoration: none;}
+     A:visited {text-decoration: none;}
+-->
+</style>
+</HEAD>
+<BODY BGCOLOR="FFFFFF" TEXT="000000" LINK="0000FF" VLINK="800080">
+
+<style>
+<!--
+#wrapper{
+position:relative;
+height:30px
+}
+
+#wrapper2{
+position:absolute
+}
+
+#menu03{
+filter:revealTrans(Duration=1.5,Transition=12)
+visibility:hide
+}
+
+.Texto:link {font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;color: Navy;text-decoration: none;
+        font-weight: normal;
+}
+.Texto:visited {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px; color: Navy;text-decoration: none;
+}
+.Texto:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px; color: #CC0033; text-decoration: none;
+        font-weight: normal;
+}
+-->
+</style></HEAD>
+
+<BODY>
+
+<ilayer id="menu01" height=35px>
+<layer id="menu02" visibility=show>
+<span id="wrapper">
+<span id="wrapper2" onClick="dropit2();event.cancelBubble=true;return false">
+<font face="Verdana" size="2"><b><a href="Ejemplo.html">Haga Click aquí para ver el Ejemplo</a></b></font>
+</span>
+</span>
+</layer>
+</ilayer>
+
+<script language="JavaScript1.2">
+
+
+var enableeffect=true
+
+var selection=new Array()
+selection[0]='<a href="http://www.gamarod.com.ar" class="Texto">Home Page</a><br>'
+selection[1]='<a href="mailto:gamarod@yahoo.com"  class="Texto">Contactame</a><br>'
+selection[2]='<a href="http://server2046.virtualave.net/gamarod/buscar.htm" class="Texto">Buscador de Rutinas</a><br>'
+selection[3]='<a href="http://server2046.virtualave.net/gamarod/lista.htm"  class="Texto">Lista de Correo</a><br>'
+selection[4]='<a href="http://server2046.virtualave.net/gamarod/firmar.htm"  class="Texto">Firmar el Libro</a><br></font>'
+
+if (document.layers)
+document.menu01.document.menu02.visibility='show'
+
+function dropit2(){
+if (document.all){
+menu03.style.left=document.body.scrollLeft+event.clientX-event.offsetX
+menu03.style.top=document.body.scrollTop+event.clientY-event.offsetY+18
+if (menu03.style.visibility=="hidden"){
+if (enableeffect)
+menu03.filters.revealTrans.apply()
+menu03.style.visibility="visible"
+if (enableeffect)
+menu03.filters.revealTrans.play()
+}
+else{
+hidemenu()
+}
+}
+}
+
+function dropit(e){
+if (document.menu03.visibility=="hide")
+document.menu03.visibility="show"
+else
+document.menu03.visibility="hide"
+document.menu03.left=e.pageX-e.layerX
+document.menu03.top=e.pageY-e.layerY+19
+return false
+}
+
+function hidemenu(){
+if (enableeffect)
+menu03.filters.revealTrans.stop()
+menu03.style.visibility="hidden"
+}
+
+function hidemenu2(){
+document.menu03.visibility="hide"
+}
+
+if (document.layers){
+document.menu01.document.menu02.captureEvents(Event.CLICK)
+document.menu01.document.menu02.onclick=dropit
+}
+else if (document.all)
+document.body.onclick=hidemenu
+
+</script>
+
+<div id="menu03" style="position:absolute;left:0;top:0;layer-background-color:#E6E6E6;background-color:#E6E6E6;width:200;visibility:hidden;border:2px solid black;padding:0px">
+<script language="JavaScript1.2">
+if (document.all)
+menu03.style.padding='4px'
+for (i=0;i<selection.length;i++)
+document.write(selection[i])
+</script>
+</div>
+
+<script language="JavaScript1.2">
+if (document.layers){
+document.menu03.captureEvents(Event.CLICK)
+document.menu03.onclick=hidemenu2
+}
+</script>
+
+<br><br><br>
+
+</BODY>
+</HTML>

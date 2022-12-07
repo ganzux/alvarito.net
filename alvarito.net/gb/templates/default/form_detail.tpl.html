@@ -1,0 +1,53 @@
+
+      <table border="0">
+        <tr>
+          <td>{label:%name%}*</td>
+          <td>{field:%name%}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>{label:%location%}</td>
+          <td>{field:%location%}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>{label:%homepage%}</td>
+          <td>{field:%homepage%}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>{label:%email%}</td>
+          <td>{field:%email%}</td>
+          <td></td>
+        </tr>
+        <tr valign="top">
+          <td>{label:%comment%}*&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>{field:%comment%}</td> 
+          <td>
+            <script language="JavaScript" type="text/javascript">
+            <!--
+              function emoticons(sign)
+              {
+                  var text_area = document.guestbookform.comment;
+                  
+                  text_area.value += sign;
+                  text_area.focus();
+              }
+            //-->
+            </script>
+            {emoticon_matrix}
+           </td>
+        </tr>
+        <tr valign="top">
+          <td></td>
+          <td>
+            {field:%preview%}&nbsp;&nbsp;&nbsp;&nbsp;
+            {field:%send%}
+          </td>
+          <td></td>
+        </tr>
+       </table>
+
+       <p>
+         * = {txt_mandatory_fields}
+       </p>

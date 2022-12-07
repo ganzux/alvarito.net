@@ -1,0 +1,28 @@
+
+
+    <h3>{txt_sign_guestbook}</h3>
+
+    <p style="margin-bottom:30px;">
+      <a href="./index.php">{txt_display_entries}</a>
+
+      <IF NAME="logged_in">
+      &nbsp;&nbsp;-&nbsp;&nbsp;<a href="./logout.php">{txt_logout}</a>
+      </IF NAME="logged_in">
+    </p>
+
+    <LOOP NAME="message">
+      <p class="messages">{message}</p>
+      <blockquote class="messages">{addition}</blockquote>
+    </LOOP NAME="message">
+
+    {entry_detail}   <!--  <<<  Detail template: entry_detail.tpl.html -->
+
+
+    <IF NAME="show_form">
+
+    <form name="guestbookform" action="./sign.php" method="post">
+
+    {form_detail}   <!--  <<<  Detail template: form_detail.tpl.html -->
+
+    </form>
+    </IF NAME="show_form">

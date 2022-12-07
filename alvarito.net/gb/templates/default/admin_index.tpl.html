@@ -1,0 +1,20 @@
+    
+    <IF NAME="logged_in">
+      <INCLUDE FILENAME="./../templates/default/menu.tpl.html">
+      <div style="float:right;margin-right:50px;"><iframe name="search_engine" src="http://www.stadtaus.com/user_information/{language}/download_center/" width="300" height="400" frameborder="0"></iframe></div>
+    </IF NAME="logged_in">
+
+    <h3>{txt_admin_interface}</h3>
+    
+    
+    
+    
+    <LOOP NAME="message">
+      <p class="messages">{message}</p>
+      <blockquote class="messages">{addition}</blockquote>
+    </LOOP NAME="message">
+    
+    
+    
+    
+           

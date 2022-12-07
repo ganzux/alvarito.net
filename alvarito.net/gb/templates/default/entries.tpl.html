@@ -1,0 +1,56 @@
+
+    <h3>{txt_display_entries}</h3>
+    
+    
+    
+    
+    <LOOP NAME="message">
+      <p class="messages">{message}</p>
+      <blockquote class="messages">{addition}</blockquote>
+    </LOOP NAME="message">
+
+    <p>
+      <a href="./sign.php">{txt_sign_guestbook}</a>
+
+      <IF NAME="logged_in">
+      &nbsp;&nbsp;-&nbsp;&nbsp;<a href="./admin/logout.php">{txt_logout}</a>
+      </IF NAME="logged_in">
+    </p>
+
+    <h4 style="margin-top:30px;">{entries} {txt_entries} &middot; {txt_page} {currentpage} {txt_page_of} {allpages}</h4>
+
+
+    <p>
+
+      <IF NAME="previous_result_page">
+        <a href="{file_name}{query_string}offset={start_link}" class="allpages">{txt_first_page}</a>&nbsp;&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&nbsp;
+        <a href="{file_name}{query_string}offset={previous_start}" class="allpages">&laquo; {txt_previous_page}</a>&nbsp;&nbsp;&middot;&nbsp;
+      </IF NAME="previous_result_page">
+
+      <IF NAME="page_link_start">
+       &nbsp;...&nbsp;
+      </IF NAME="page_link_start">
+
+
+      <LOOP NAME="page_direct"><a href="./{file_name}{query_string}offset={page}" class="{link_class}"> {page} </a>&nbsp;</LOOP NAME="page_direct">
+
+
+      <IF NAME="page_link_end">
+       ...&nbsp;
+      </IF NAME="page_link_end">
+
+      <IF NAME="next_result_page">
+        &middot;&nbsp;&nbsp;<a href="{file_name}{query_string}offset={next_start}" class="allpages">{txt_next_page} &raquo;</a>
+        &nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&nbsp;<a href="{file_name}{query_string}offset={end_link}" class="allpages"> {txt_last_page}</a>
+      </IF NAME="next_result_page">
+
+    </p>
+
+    {entry_detail}   <!--  <<<  Detail template: entry_detail.tpl.html -->
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>

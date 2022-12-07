@@ -1,0 +1,1 @@
+&name1=slug&score1=0
